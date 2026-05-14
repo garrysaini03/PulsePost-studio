@@ -20,7 +20,6 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState(null);
   const [showAuth, setShowAuth] = useState(false);
-  const [checkingAuth, setCheckingAuth] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("starter");
 
@@ -35,10 +34,7 @@ export default function App() {
         })
         .catch(() => {
           localStorage.removeItem("pulsepost-token");
-        })
-        .finally(() => setCheckingAuth(false));
-    } else {
-      setCheckingAuth(false);
+        });
     }
   }, []);
 
@@ -134,44 +130,6 @@ export default function App() {
       setPage("landing");
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  /* ── Loading state ── */
-  if (checkingAuth) {
-    return (
-      <div
-        style={{
-          background: "var(--bg, #06060f)",
-          color: "#fff",
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "1.1rem",
-          fontFamily: "Space Grotesk, system-ui, sans-serif",
-        }}
-      >
-        <div style={{ textAlign: "center" }}>
-          <div
-            style={{
-              width: 48,
-              height: 48,
-              borderRadius: 12,
-              background: "linear-gradient(135deg, #8b5cf6, #06b6d4)",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "1.2rem",
-              marginBottom: 16,
-              animation: "glowPulse 2s ease-in-out infinite",
-            }}
-          >
-            ▶
-          </div>
-          <p style={{ opacity: 0.6 }}>Loading PulsePost...</p>
-        </div>
-      </div>
-    );
   }
 
   /* ══════════════════════════════════════════
@@ -443,25 +401,26 @@ export default function App() {
       <main>
         {/* ── Hero ── */}
         <section className="landing-hero" style={{ position: "relative", overflow: "hidden" }}>
-          {/* Background Video */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              zIndex: 0,
-              opacity: 0.25,
-              pointerEvents: "none",
-            }}
-          >
-            <source src={landingHeroVideoUrl} type="video/mp4" />
-          </video>
+          {landingHeroVideoUrl && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                zIndex: 0,
+                opacity: 0.25,
+                pointerEvents: "none",
+              }}
+            >
+              <source src={landingHeroVideoUrl} type="video/mp4" />
+            </video>
+          )}
           {/* Dark overlay for readability */}
           <div
             style={{
