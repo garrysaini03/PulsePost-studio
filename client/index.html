@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="description" content="PulsePost Studio — Upload one video and publish it across Facebook, YouTube, Instagram, and TikTok. MERN full-stack social media management." />
+    <title>PulsePost Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    
+    <style>
+      /* ── UNIVERSAL RESPONSIVE FIX ── */
+      :root {
+        --bg-color: #050510;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--bg-color);
+        overflow-x: hidden; /* Phone par side scroll rokne ke liye */
+        width: 100%;
+      }
+
+      /* Mobile adjustments (Phone ke liye) */
+      @media (max-width: 768px) {
+        .landing-h1 {
+          font-size: 2.2rem !important; /* Laptop pe bade, mobile pe chote */
+          line-height: 1.2 !important;
+          padding: 0 15px;
+        }
+
+        .landing-lead {
+          font-size: 1rem !important;
+          margin-bottom: 30px !important;
+        }
+
+        .hero-buttons {
+          flex-direction: column !important; /* Buttons ek ke neeche ek aayenge */
+          width: 100% !important;
+          padding: 0 25px;
+          gap: 12px !important;
+        }
+
+        .primary-button, .ghost-button, .navbar-cta {
+          width: 100% !important; /* Full width buttons on phone */
+          text-align: center;
+        }
+
+        /* Navbar links chhupa do jo phone par bure lagte hain */
+        .navbar-links {
+          display: none !important;
+        }
+
+        .navbar-inner {
+          padding: 0 15px !important;
+        }
+        
+        .brand-text {
+          font-size: 1rem !important;
+        }
+      }
+
+      /* Desktop adjustments (Laptop ke liye) */
+      @media (min-width: 769px) {
+        .landing-h1 {
+          font-size: 4.5rem !important;
+        }
+      }
+    </style>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

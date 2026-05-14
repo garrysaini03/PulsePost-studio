@@ -1,0 +1,97 @@
+services:
+  - type: web
+    name: pulsepost-api
+    env: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm run start --workspace server
+    healthCheckPath: /api/ready
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_URL
+        sync: false
+      - key: SERVER_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: QUEUE_ENABLED
+        value: true
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: META_CLIENT_ID
+        sync: false
+      - key: META_CLIENT_SECRET
+        sync: false
+      - key: META_REDIRECT_URI
+        sync: false
+      - key: INSTAGRAM_REDIRECT_URI
+        sync: false
+      - key: META_API_VERSION
+        value: v21.0
+      - key: FB_PAGE_ID
+        sync: false
+      - key: FB_PAGE_ACCESS_TOKEN
+        sync: false
+      - key: IG_USER_ID
+        sync: false
+      - key: IG_ACCESS_TOKEN
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REDIRECT_URI
+        sync: false
+      - key: YOUTUBE_PRIVACY_STATUS
+        value: unlisted
+
+  - type: worker
+    name: pulsepost-worker
+    env: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm run worker --workspace server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: QUEUE_ENABLED
+        value: true
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: META_CLIENT_ID
+        sync: false
+      - key: META_CLIENT_SECRET
+        sync: false
+      - key: META_API_VERSION
+        value: v21.0
+      - key: FB_PAGE_ID
+        sync: false
+      - key: FB_PAGE_ACCESS_TOKEN
+        sync: false
+      - key: IG_USER_ID
+        sync: false
+      - key: IG_ACCESS_TOKEN
+        sync: false
