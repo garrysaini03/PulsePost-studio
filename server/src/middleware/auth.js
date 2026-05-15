@@ -11,7 +11,7 @@ export async function requireAuth(req, res, next) {
       return res.status(401).json({ message: "Authentication required" });
     }
 
-    const payload = jwt.verify(token, env.jwtSecret);
+    const payload = jwt.verify(token, env.JWT_SECRET);
     const user = await User.findById(payload.sub).select("_id name email");
 
     if (!user) {

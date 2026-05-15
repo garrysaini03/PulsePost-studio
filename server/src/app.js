@@ -27,19 +27,12 @@ export function createApp() {
 
   app.set("trust proxy", 1);
 
-  app.use(
-    cors({
-      origin(origin, callback) {
-        if (!origin || allowedOrigins.has(origin)) {
-          callback(null, true);
-          return;
-        }
-
-        callback(new Error(`CORS blocked for origin: ${origin}`));
-      },
-      credentials: true,
-    })
-  );
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);  
 
   app.use(express.json());
 

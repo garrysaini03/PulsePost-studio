@@ -8,3 +8,4 @@ export async function connectDatabase() {
 
   await mongoose.connect(env.mongoUri);
 }
+

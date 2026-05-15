@@ -35,7 +35,7 @@ export const env = {
   clientUrls: [clientUrl, ...parseList(process.env.ALLOWED_ORIGINS)],
   serverUrl,
   mongoUri: process.env.MONGO_URI || "",
-  jwtSecret: process.env.JWT_SECRET || "change-me",
+  JWT_SECRET: process.env.JWT_SECRET || "change-me",
   redisUrl: process.env.REDIS_URL || "redis://127.0.0.1:6379",
   queueEnabled: parseBoolean(process.env.QUEUE_ENABLED, true),
   openrouterKey: process.env.OPENROUTER_API_KEY || "",

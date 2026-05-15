@@ -58,9 +58,9 @@ When these are present, Facebook and Instagram publishing uses these env credent
 Use `client/.env.example` as the frontend environment template.
 
 ```text
-VITE_API_URL=https://your-backend-domain.com/api
-VITE_LANDING_HERO_VIDEO_URL=https://your-cdn-url/landing-hero.mp4
-VITE_STUDIO_BACKGROUND_VIDEO_URL=https://your-cdn-url/studio-background.mp4
+VITE_API_URL=https://pulsepost-studio-10.onrender.com/api
+VITE_LANDING_HERO_VIDEO_URL=/AIBG-video.mp4
+VITE_STUDIO_BACKGROUND_VIDEO_URL=/bg-video.mp4
 ```
 
 ## Render Backend
