@@ -113,9 +113,16 @@ export default function AIStudio() {
         `}
       </style>
       {/* ── VIDEO BACKGROUND ── */}
-      <video autoPlay loop muted playsInline style={styles.bgVideo}>
-        <source src={studioBackgroundVideoUrl} type="video/mp4" />
-      </video>
+<video
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="metadata"
+  style={styles.bgVideo}
+>
+  <source src={studioBackgroundVideoUrl} type="video/mp4" />
+</video>
 
       {/* ── OVERLAY ── */}
       <div style={styles.overlay}></div>
