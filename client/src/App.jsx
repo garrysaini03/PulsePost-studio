@@ -414,8 +414,8 @@ export default function App() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                zIndex: 0,
-                opacity: 0.25,
+                zIndex: 1,
+                opacity: 0.7,
                 pointerEvents: "none",
               }}
             >
