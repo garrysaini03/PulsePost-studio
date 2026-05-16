@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Plans from "./pages/Plans";
 import { api } from "./api";
 
-const landingHeroVideoUrl = import.meta.env.VITE_LANDING_HERO_VIDEO_URL || "/AIBG.mp4";
+const landingHeroVideoUrl = import.meta.env.VITE_LANDING_HERO_VIDEO_URL || "/AIBG-video.mp4";
 const floatingPlatforms = [
   { key: "instagram", label: "Instagram", icon: "📸", color: "#E4405F" },
   { key: "youtube", label: "YouTube", icon: "▶️", color: "#FF0000" },
