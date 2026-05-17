@@ -28,27 +28,29 @@ const allowedOrigins = [
   "https://pulse-post-studio-client-cz47ai96r-sainigarry03-2863s-projects.vercel.app",
 ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      return callback(new Error(`CORS blocked for origin: ${origin}`));
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
 
-app.options(
-  "*",
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,POST,PUT,PATCH,DELETE,OPTIONS"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization"
+  );
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+
+  next();
+});
 
   app.use(express.json());
 
