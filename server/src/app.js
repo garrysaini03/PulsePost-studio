@@ -19,20 +19,36 @@ import { env } from "./config/env.js";
 export function createApp() {
 
   const app = express();
-  const allowedOrigins = new Set([
-    ...env.clientUrls,
-    "http://localhost:5173",
-    "http://localhost:5174",
-  ]);
 
   app.set("trust proxy", 1);
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://pulse-post-studio-client.vercel.app",
+  "https://pulse-post-studio-client-cz47ai96r-sainigarry03-2863s-projects.vercel.app",
+];
 
 app.use(
   cors({
-    origin: true,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.options(
+  "*",
+  cors({
+    origin: allowedOrigins,
     credentials: true,
   })
-);  
+);
 
   app.use(express.json());
 
